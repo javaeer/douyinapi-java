@@ -1,0 +1,21 @@
+Douyin API Java SDK
+Copyright 2026 javaeer (Yunlou Network)
+
+This product includes software developed as part of the douyinapi-java project
+(https://github.com/javaeer/douyinapi-java).
+
+------------------------------------------------------------------------------
+This product includes/uses the following third-party libraries:
+
+* OkHttp (https://square.github.io/okhttp/)
+  Copyright Square, Inc. — Licensed under the Apache License, Version 2.0.
+
+* Jackson (https://github.com/FasterXML/jackson)
+  Copyright FasterXML, LLC — Licensed under the Apache License, Version 2.0.
+
+* Apache Commons Codec (https://commons.apache.org/proper/commons-codec/)
+  Copyright The Apache Software Foundation — Licensed under the Apache License, Version 2.0.
+
+* Project Lombok (https://projectlombok.org/)
+  Copyright The Project Lombok Authors — Licensed under the MIT License.
+------------------------------------------------------------------------------

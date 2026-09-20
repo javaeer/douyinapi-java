@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 使用问题 / 交流讨论
+    url: https://github.com/javaeer/douyinapi-java/discussions
+    about: 一般性提问、使用求助请优先在 Discussions 中发起。
+  - name: 🔒 报告安全漏洞
+    url: https://github.com/javaeer/douyinapi-java/security/advisories/new
+    about: 请不要通过公开 Issue 报告安全问题，详见 SECURITY.md。
