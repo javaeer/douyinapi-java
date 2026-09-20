@@ -47,7 +47,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<lombok.version>1.18.12</lombok.version>
-		<okhttp3.version>4.9.3</okhttp3.version>
+		<okhttp3.version>4.12.0</okhttp3.version>
 		<slf4j-api.version>1.7.30</slf4j-api.version>
 		<jackson.version>2.11.1</jackson.version>
 		<guava.version>32.0.0-jre</guava.version>
@@ -55,7 +55,6 @@
 		<commons-text.version>1.14.0</commons-text.version>
 		<logback.version>1.2.12</logback.version>
 
-		<httpclient.version>4.5.14</httpclient.version>
 		<commons.codec.version>1.15</commons.codec.version>
 		<jackson.version>2.15.2</jackson.version>
 		<slf4j.version>1.7.36</slf4j.version>
@@ -119,13 +118,6 @@
 			<version>${slf4j-api.version}</version>
 		</dependency>
 
-
-		<!-- HTTP client -->
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>${httpclient.version}</version>
-		</dependency>
 		<!-- MD5 / base64 helpers -->
 		<dependency>
 			<groupId>commons-codec</groupId>

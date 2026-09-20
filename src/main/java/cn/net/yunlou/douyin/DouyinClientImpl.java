@@ -1,7 +1,7 @@
 package cn.net.yunlou.douyin;
 
-import cn.net.yunlou.douyin.impl.ApacheHttpClientRequestExecutor;
 import cn.net.yunlou.douyin.impl.DefaultDouyinConfigImpl;
+import cn.net.yunlou.douyin.impl.OkHttpDouyinRequestExecutor;
 import cn.net.yunlou.douyin.oauth.DouyinOAuthService;
 import cn.net.yunlou.douyin.oauth.DouyinOAuthServiceImpl;
 import cn.net.yunlou.douyin.pay.DouyinPayService;
@@ -20,7 +20,7 @@ public class DouyinClientImpl implements DouyinClient {
     private final DouyinPayService payService;
 
     public DouyinClientImpl(DouyinConfigStorage configStorage) {
-        this(configStorage, new ApacheHttpClientRequestExecutor(configStorage));
+        this(configStorage, new OkHttpDouyinRequestExecutor(configStorage));
     }
 
     public DouyinClientImpl(DouyinConfigStorage configStorage, DouyinRequestExecutor requestExecutor) {
@@ -30,12 +30,16 @@ public class DouyinClientImpl implements DouyinClient {
         this.payService = new DouyinPayServiceImpl(this);
     }
 
-    /** 以配置构造客户端（使用内置 Apache HttpClient 执行器）。 */
+    /**
+     * 以配置构造客户端（使用内置 Apache HttpClient 执行器）。
+     */
     public static DouyinClientImpl fromConfig(DouyinConfigStorage configStorage) {
         return new DouyinClientImpl(configStorage);
     }
 
-    /** 链式构造客户端。 */
+    /**
+     * 链式构造客户端。
+     */
     public static Builder builder() {
         return new Builder();
     }
@@ -60,7 +64,9 @@ public class DouyinClientImpl implements DouyinClient {
         return payService;
     }
 
-    /** 链式构造器。 */
+    /**
+     * 链式构造器。
+     */
     public static final class Builder {
         private String clientKey;
         private String clientSecret;
