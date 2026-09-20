@@ -61,7 +61,7 @@
 
 		<!-- 运行期依赖 -->
 		<jackson.version>2.15.2</jackson.version>
-		<okhttp.version>4.12.0</okhttp.version>
+		<okhttp.version>5.5.0</okhttp.version>
 		<commons-codec.version>1.15</commons-codec.version>
 		<lombok.version>1.18.34</lombok.version>
 
