@@ -21,7 +21,7 @@ import java.util.Set;
 /**
  * 抖音开放平台签名工具。
  *
- * <h3>担保支付（MD5，旧版）</h3>
+ * <h2>担保支付（MD5，旧版）</h2>
  * 官方签名算法（请求加签）：
  * <ol>
  *   <li>sign / app_id / thirdparty_id 为身份字段，<b>不参与签名</b>；</li>
@@ -158,7 +158,7 @@ public final class SignUtils {
     /**
      * RSA-SHA256 加签（通用交易系统）。
      *
-     * @param content       待签明文（通常是按 key 升序拼接的 key=value&... 串）
+     * @param content       待签明文（通常是按 key 升序拼接的 key=value&amp;... 串）
      * @param privateKeyPem 应用私钥 PEM
      * @return Base64 签名
      */

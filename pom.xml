@@ -46,7 +46,7 @@
 		<maven.compiler.target>8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<lombok.version>1.18.12</lombok.version>
+		<lombok.version>1.18.34</lombok.version>
 		<okhttp3.version>4.12.0</okhttp3.version>
 		<slf4j-api.version>1.7.30</slf4j-api.version>
 		<jackson.version>2.11.1</jackson.version>
@@ -180,15 +180,15 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.1.2</version>
-				<configuration>
-					<skipTests>true</skipTests>
-				</configuration>
+<!--				<configuration>-->
+<!--					<skipTests>true</skipTests>-->
+<!--				</configuration>-->
 			</plugin>
 			<!--   javadoc源码插件 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.1.1</version>
+				<version>3.6.3</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
