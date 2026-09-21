@@ -15,9 +15,15 @@
 
 - 构建配置：GPG 签名 / 源码与 Javadoc 产物 / Central 发布收敛至 `release` profile，普通 `mvn verify` 不再需要密钥。
 - 依赖治理：移除未使用的 guava、commons-text、commons-lang3、logback、slf4j；Lombok 调整为 `provided`。
+- **Mockito 由 5.7.0 降至 4.11.0**：Mockito 5+ 以 Java 11 编译，与本项目 Java 8 编译目标冲突（详见 Fixed）。
+- Dependabot 收敛：忽略会破坏 Java 8 兼容性的 major 升级（Mockito 5+、JUnit 6、OkHttp 5、Jackson 3 等），
+  并按插件 / 测试依赖分组，避免一次性开出大量 PR。
 
 ### Fixed
 
+- **修复 CI 在 JDK 8 job 上的构建失败**（`main` 分支自身即为红色）。根因：Mockito 5.7.0 最低要求 JDK 11，
+  在 JDK 8 下执行 `testCompile` 报 `bad class file ... org/mockito/ArgumentMatchers.class,
+  class file has wrong version 55.0, should be 52.0`。已在 JDK 8 / 11 / 17 / 21 全矩阵验证通过。
 - 清理 `bean/pay` 下多个请求类的未使用 import。
 - 修正 `DouyinClientImpl` 中与实现不符的 Javadoc（Apache HttpClient → OkHttp）。
 

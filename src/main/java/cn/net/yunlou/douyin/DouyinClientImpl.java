@@ -31,7 +31,7 @@ public class DouyinClientImpl implements DouyinClient {
     }
 
     /**
-     * 以配置构造客户端（使用内置 Apache HttpClient 执行器）。
+     * 以配置构造客户端（使用内置 OkHttp 执行器）。
      */
     public static DouyinClientImpl fromConfig(DouyinConfigStorage configStorage) {
         return new DouyinClientImpl(configStorage);

@@ -4,23 +4,79 @@ updates:
   - package-ecosystem: "maven"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "monday"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     labels:
       - "dependencies"
     commit-message:
       prefix: "build(deps)"
 
+    # 把同类依赖合并成一个 PR，避免一次性开十几个 PR 轰炸仓库
+    groups:
+      maven-plugins:
+        patterns:
+          - "org.apache.maven.plugins:*"
+          - "org.jacoco:*"
+          - "org.sonatype.central:*"
+        update-types:
+          - "minor"
+          - "patch"
+      test-dependencies:
+        patterns:
+          - "org.junit.jupiter:*"
+          - "org.mockito:*"
+        update-types:
+          - "minor"
+          - "patch"
+
+    # 本项目对外承诺支持 Java 8（maven.compiler.source/target = 8），
+    # 因此下列 major 升级会破坏 JDK 8 兼容性，禁止自动升级。
+    # 如确需跨大版本，请手动发起 PR 并同步验证 CI 矩阵中的 JDK 8 / 11 job。
+    ignore:
+      # Mockito 5+ 要求 JDK 11（class 版本 55.0），在 JDK 8 上 testCompile 失败
+      - dependency-name: "org.mockito:mockito-core"
+        update-types:
+          - "version-update:semver-major"
+      # JUnit 6 要求 JDK 17+，CI 的 JDK 8 / 11 job 必然失败
+      - dependency-name: "org.junit.jupiter:junit-jupiter"
+        update-types:
+          - "version-update:semver-major"
+      # OkHttp 5 要求 JDK 11+，且 API 有破坏性变更
+      - dependency-name: "com.squareup.okhttp3:okhttp"
+        update-types:
+          - "version-update:semver-major"
+      # Jackson 3.x 要求 Java 11，且包名由 com.fasterxml 迁移到 tools.jackson
+      - dependency-name: "com.fasterxml.jackson.core:jackson-databind"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+        update-types:
+          - "version-update:semver-major"
+      # 构建插件的 major 版本通常会提高 Maven / JDK 基线要求，保持谨慎
+      - dependency-name: "org.apache.maven.plugins:*"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "org.jacoco:jacoco-maven-plugin"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "org.sonatype.central:central-publishing-maven-plugin"
+        update-types:
+          - "version-update:semver-major"
+
   # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "monday"
-    open-pull-requests-limit: 10
     labels:
       - "dependencies"
       - "ci"
     commit-message:
       prefix: "ci(deps)"
+    ignore:
+      # action 的大版本可能引入参数或运行时破坏性变更，需人工确认
+      - dependency-name: "actions/*"
+        update-types:
+          - "version-update:semver-major"

@@ -58,6 +58,9 @@ cd douyinapi-java
 - 新增或修改功能需附带单元测试，保持 `src/test` 与主代码同构。
 - 涉及签名 / 验签的改动，请以官方文档给出的向量为准补充用例。
 - 确保本地 `./mvnw verify` 全绿后再提交 PR。
+- **Mockito 必须保持在 4.x**：本项目编译目标为 Java 8，而 Mockito 5+ 以 Java 11 编译，
+  升级后 CI 的 JDK 8 job 会报 `class file has wrong version 55.0, should be 52.0`。
+  同理，任何测试依赖的升级都不得破坏 Java 8 兼容性。
 
 ## Pull Request 流程
 

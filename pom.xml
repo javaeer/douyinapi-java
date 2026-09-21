@@ -65,9 +65,16 @@
 		<commons-codec.version>1.15</commons-codec.version>
 		<lombok.version>1.18.34</lombok.version>
 
-		<!-- 测试依赖 -->
+		<!-- 测试依赖
+		     注意：Mockito 必须锁定在 4.x 分支。
+		     Mockito 5+ 以 Java 11 编译（class 文件版本 55.0），而本项目编译目标为
+		     Java 8（class 文件版本 52.0）。在 JDK 8 上执行 testCompile 会直接失败：
+		       bad class file: mockito-core-5.7.0.jar(org/mockito/ArgumentMatchers.class)
+		       class file has wrong version 55.0, should be 52.0
+		     若确实要升级到 Mockito 5+，必须先放弃对 Java 8 的支持（同步调整
+		     maven.compiler.source/target 与 CI 矩阵）。 -->
 		<junit.version>5.10.0</junit.version>
-		<mockito.version>5.7.0</mockito.version>
+		<mockito.version>4.11.0</mockito.version>
 
 		<!-- 构建插件版本 -->
 		<maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
