@@ -73,7 +73,7 @@
 		       class file has wrong version 55.0, should be 52.0
 		     若确实要升级到 Mockito 5+，必须先放弃对 Java 8 的支持（同步调整
 		     maven.compiler.source/target 与 CI 矩阵）。 -->
-		<junit.version>5.10.0</junit.version>
+		<junit.version>5.14.4</junit.version>
 		<mockito.version>4.11.0</mockito.version>
 
 		<!-- 构建插件版本 -->
